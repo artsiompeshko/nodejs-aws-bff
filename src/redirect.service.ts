@@ -8,10 +8,10 @@ export class RedirectService {
   getServiceUrl(url: string): string {
     const [_, service, ...rest] = url.split('/');
 
-    if (!process.env[service]) {
+    if (!this.configService.get(service)) {
       return '';
     }
 
-    return `${process.env[service] + '/' + rest.join('/')}`;
+    return `${this.configService.get(service) + '/' + rest.join('/')}`;
   }
 }
