@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, CacheModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
@@ -10,6 +10,7 @@ import { RedirectService } from './redirect.service';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    CacheModule.register(),
   ],
   controllers: [AppController],
   providers: [AppService, RedirectService],
