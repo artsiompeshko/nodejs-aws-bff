@@ -15,7 +15,11 @@ export class AppService {
   constructor(private readonly redirectService: RedirectService) {}
 
   async processRequest(@Req() request: Request, body: any): Promise<any> {
+    console.info('Processing request', request.url);
+
     const serviceUrl = this.redirectService.getServiceUrl(request.url);
+
+    console.info('Parse service url', serviceUrl);
 
     if (!serviceUrl) {
       throw new BadGatewayException({
